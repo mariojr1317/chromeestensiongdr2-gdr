@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GD Pattern Player — GDR/GDR2</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: #0b1020;
+      color: #eef2ff;
+    }
+    main { width: min(900px, calc(100% - 32px)); margin: 48px auto; }
+    .card {
+      background: #151b2e;
+      border: 1px solid #29314d;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 40px #0006;
+    }
+    h1 { margin-top: 0; }
+    p { color: #b9c2df; }
+    input, button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #394463;
+      font: inherit;
+    }
+    input { background: #0f1527; color: #fff; }
+    button { background: #6d7cff; color: white; cursor: pointer; font-weight: 700; }
+    button:hover { filter: brightness(1.08); }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #0a0f1d;
+      padding: 16px;
+      border-radius: 10px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>🎮 GD Pattern Player</h1>
+      <p>Analiza archivos de replay <strong>.gdr</strong> y <strong>.gdr2</strong>.</p>
+      <input id="file" type="file" accept=".gdr,.gdr2">
+      <button id="load" type="button">Analizar archivo</button>
+      <pre id="status">Selecciona un archivo para comenzar.</pre>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
