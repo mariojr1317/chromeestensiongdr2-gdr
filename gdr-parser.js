@@ -75,17 +75,18 @@ function readBool(bytes, state) {
 function parsePackedInput(bytes, state, platformer) {
   const packed = readVarUint(bytes, state);
 
-  const down = Boolean((packed >> 1) & 1);
+  // Avoid JavaScript bitwise operators here: they coerce numbers to signed
+  // 32-bit integers. GDR2 varints can be larger than 32 bits.
+  const down = Math.floor(packed / 2) % 2 === 1;
   let frameDelta;
   let button;
 
   if (platformer) {
-    button = (packed >> 2) & 0x03;
-    frameDelta = packed >> 4;
+    button = Math.floor(packed / 4) % 4;
+    frameDelta = Math.floor(packed / 16);
   } else {
-    // Standard Geometry Dash input is the jump input.
     button = 1;
-    frameDelta = packed >> 2;
+    frameDelta = Math.floor(packed / 4);
   }
 
   return { frameDelta, button, down };
