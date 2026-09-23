@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GD Pattern Player</title>
+  <style>
+    body { width: 320px; margin: 0; padding: 16px; font: 14px system-ui, sans-serif; }
+    h1 { font-size: 18px; margin: 0 0 12px; }
+    button, input { width: 100%; box-sizing: border-box; margin-top: 8px; padding: 9px; }
+    #status { margin-top: 12px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>GD Pattern Player</h1>
+  <input id="file" type="file" accept=".gdr,.gdr2">
+  <button id="load" type="button">Analizar patrón</button>
+  <div id="status">Selecciona un archivo .gdr o .gdr2.</div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
