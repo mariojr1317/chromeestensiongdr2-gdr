@@ -13,17 +13,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create extension ZIP
-        run: |
-          mkdir -p dist
-          zip -r dist/gd-pattern-player.zip . \
-            -x ".git/*" \
-               ".github/*" \
-               "dist/*"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install CRX3 packer
+        run: npm install --global crx3@2.0.0
+
+      - name: Build extension
+        run: make package
+
+      - name: Upload gd-pattern-player.crx
+        uses: actions/upload-artifact@v4
+        with:
+          name: gd-pattern-player-crx
+          path: dist/gd-pattern-player.crx
+          if-no-files-found: error
 
       - name: Upload gd-pattern-player.zip
         uses: actions/upload-artifact@v4
         with:
-          name: gd-pattern-player
+          name: gd-pattern-player-zip
           path: dist/gd-pattern-player.zip
           if-no-files-found: error
