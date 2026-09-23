@@ -1,0 +1,29 @@
+name: Build Chrome extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create extension ZIP
+        run: |
+          mkdir -p dist
+          zip -r dist/gd-pattern-player.zip . \
+            -x ".git/*" \
+               ".github/*" \
+               "dist/*"
+
+      - name: Upload gd-pattern-player.zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: gd-pattern-player
+          path: dist/gd-pattern-player.zip
+          if-no-files-found: error
