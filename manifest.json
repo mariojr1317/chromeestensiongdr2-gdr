@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "GD Pattern Player",
+  "version": "0.1.0",
+  "description": "Reproduce patrones de input de Geometry Dash desde archivos .gdr y .gdr2.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GD Pattern Player"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
