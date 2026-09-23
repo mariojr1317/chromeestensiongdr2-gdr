@@ -16,7 +16,7 @@ loadButton.addEventListener("click", async () => {
     const buffer = await file.arrayBuffer();
 
     if (file.name.toLowerCase().endsWith(".gdr2")) {
-      const replay = parseGDR2(buffer);
+      replay = parseGDR2(buffer);
 
       status.textContent = [
         "✅ GDR2 válido",
